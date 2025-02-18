@@ -35,8 +35,13 @@ function performOperation(operation) {
     }
 
     // Input validation
-    if (isNaN(data.a) || isNaN(data.b)) {
+    if ((operation === 'add' || operation === 'subtract' || operation === 'multiply' || operation === 'divide') && (isNaN(data.a) || isNaN(data.b))) {
         displayError('Invalid input: Please enter valid numbers for the operation.');
+        return;
+    }
+
+    if ((operation === 'differentiate' || operation === 'integrate') && (expression.trim() === '' || variable.trim() === '')) {
+        displayError('Invalid input: Please enter a valid expression and variable for the operation.');
         return;
     }
 
