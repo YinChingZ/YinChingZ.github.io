@@ -17,13 +17,13 @@ body {
 }
 
 .display {
-    background: #333;
-    color: #fff;
+    background: #f0f0f0;
+    color: #333;
     border-radius: 5px;
-    padding: 10px;
+    padding: 15px;
     margin-bottom: 20px;
     text-align: right;
-    font-size: 2em;
+    font-size: 2.5em;
 }
 
 .buttons {
@@ -36,7 +36,7 @@ body {
     background: #e0e0e0;
     border: none;
     border-radius: 5px;
-    padding: 20px;
+    padding: 25px;
     font-size: 1.5em;
     cursor: pointer;
     transition: background 0.3s ease;
@@ -90,6 +90,45 @@ body {
     background: #388e3c;
 }
 
+#sqrt {
+    background: #64b5f6;
+    color: #fff;
+}
+
+#sqrt:hover {
+    background: #42a5f5;
+}
+
+#sqrt:active {
+    background: #2196f3;
+}
+
+#percentage {
+    background: #ba68c8;
+    color: #fff;
+}
+
+#percentage:hover {
+    background: #ab47bc;
+}
+
+#percentage:active {
+    background: #9c27b0;
+}
+
+#power {
+    background: #ff8a65;
+    color: #fff;
+}
+
+#power:hover {
+    background: #ff7043;
+}
+
+#power:active {
+    background: #ff5722;
+}
+
 @media (max-width: 600px) {
     .calculator {
         width: 100%;
@@ -97,11 +136,11 @@ body {
     }
 
     .btn {
-        padding: 15px;
+        padding: 20px;
         font-size: 1.2em;
     }
 
     .display {
-        font-size: 1.5em;
+        font-size: 2em;
     }
 }

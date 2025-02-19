@@ -31,6 +31,12 @@ function handleInput(value) {
         addDecimal();
     } else if (value === '=') {
         calculateResult();
+    } else if (value === '√') {
+        calculateSquareRoot();
+    } else if (value === '%') {
+        calculatePercentage();
+    } else if (value === '^') {
+        handlePowerOperator();
     } else if (isNumber(value)) {
         addNumber(value);
     }
@@ -46,7 +52,7 @@ function isNumber(value) {
 }
 
 function isOperator(value) {
-    return value === '+' || value === '-' || value === '×' || value === '÷';
+    return value === '+' || value === '-' || value === '×' || value === '÷' || value === '^';
 }
 
 function handleOperator(value) {
@@ -60,6 +66,21 @@ function handleOperator(value) {
         }
         operator = value;
         currentInput += ` ${value} `;
+        isDecimalAdded = false;
+    }
+}
+
+function handlePowerOperator() {
+    if (currentInput === '' && result !== '') {
+        currentInput = result;
+        result = '';
+    }
+    if (currentInput !== '') {
+        if (operator !== '') {
+            calculateResult();
+        }
+        operator = '^';
+        currentInput += ` ^ `;
         isDecimalAdded = false;
     }
 }
@@ -108,7 +129,30 @@ function calculateResult() {
             case '÷':
                 result = num1 / num2;
                 break;
+            case '^':
+                result = Math.pow(num1, num2);
+                break;
         }
+        currentInput = '';
+        operator = '';
+        isDecimalAdded = false;
+    }
+}
+
+function calculateSquareRoot() {
+    if (currentInput !== '') {
+        const num = parseFloat(currentInput);
+        result = Math.sqrt(num);
+        currentInput = '';
+        operator = '';
+        isDecimalAdded = false;
+    }
+}
+
+function calculatePercentage() {
+    if (currentInput !== '') {
+        const num = parseFloat(currentInput);
+        result = num / 100;
         currentInput = '';
         operator = '';
         isDecimalAdded = false;
