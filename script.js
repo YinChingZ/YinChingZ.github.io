@@ -52,7 +52,7 @@ function isNumber(value) {
 }
 
 function isOperator(value) {
-    return value === '+' || value === '-' || value === '×' || value === '÷' || value === '^';
+    return value === '+' || value === '-' || value === '×' || value === '÷' || value === '^' || value === '%';
 }
 
 function handleOperator(value) {
@@ -131,6 +131,9 @@ function calculateResult() {
                 break;
             case '^':
                 result = Math.pow(num1, num2);
+                break;
+            case '%':
+                result = num1 % num2;
                 break;
         }
         currentInput = '';
