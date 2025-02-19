@@ -1,3 +1,5 @@
+import * as math from 'mathjs';
+
 document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('button').forEach(button => {
         button.addEventListener('click', function() {
@@ -13,21 +15,26 @@ function performOperation(operation) {
     const expression = document.getElementById('expression').value;
     const variable = document.getElementById('variable').value;
 
-    let url = '';
-    let data = {};
+    let result;
 
     switch (operation) {
         case 'add':
+            result = add(parseFloat(input1), parseFloat(input2));
+            break;
         case 'subtract':
+            result = subtract(parseFloat(input1), parseFloat(input2));
+            break;
         case 'multiply':
+            result = multiply(parseFloat(input1), parseFloat(input2));
+            break;
         case 'divide':
-            url = `/${operation}`;
-            data = { a: parseFloat(input1), b: parseFloat(input2) };
+            result = divide(parseFloat(input1), parseFloat(input2));
             break;
         case 'differentiate':
+            result = differentiate(expression, variable);
+            break;
         case 'integrate':
-            url = `/${operation}`;
-            data = { expression: expression, variable: variable };
+            result = integrate(expression, variable);
             break;
         default:
             console.error('Invalid operation');
@@ -35,7 +42,7 @@ function performOperation(operation) {
     }
 
     // Input validation
-    if ((operation === 'add' || operation === 'subtract' || operation === 'multiply' || operation === 'divide') && (isNaN(data.a) || isNaN(data.b))) {
+    if ((operation === 'add' || operation === 'subtract' || operation === 'multiply' || operation === 'divide') && (isNaN(parseFloat(input1)) || isNaN(parseFloat(input2)))) {
         displayError('Invalid input: Please enter valid numbers for the operation.');
         return;
     }
@@ -45,28 +52,46 @@ function performOperation(operation) {
         return;
     }
 
-    // Display loading indicator
-    displayLoading(true);
+    document.getElementById('result').innerText = result;
+}
 
-    fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    })
-    .then(response => response.json())
-    .then(result => {
-        document.getElementById('result').innerText = result.result;
-        // Hide loading indicator
-        displayLoading(false);
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        displayError('An error occurred while processing the request.');
-        // Hide loading indicator
-        displayLoading(false);
-    });
+function add(a, b) {
+    return math.add(a, b);
+}
+
+function subtract(a, b) {
+    return math.subtract(a, b);
+}
+
+function multiply(a, b) {
+    return math.multiply(a, b);
+}
+
+function divide(a, b) {
+    if (b === 0) {
+        return "Error: Division by zero";
+    }
+    return math.divide(a, b);
+}
+
+function differentiate(expression, variable) {
+    try {
+        const expr = math.parse(expression);
+        const diffExpr = math.derivative(expr, variable);
+        return diffExpr.toString();
+    } catch (e) {
+        return e.toString();
+    }
+}
+
+function integrate(expression, variable) {
+    try {
+        const expr = math.parse(expression);
+        const intExpr = math.integrate(expr, variable);
+        return intExpr.toString();
+    } catch (e) {
+        return e.toString();
+    }
 }
 
 function displayError(message) {
