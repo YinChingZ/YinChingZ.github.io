@@ -1,14 +1,5 @@
 import * as math from 'mathjs';
 
-document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('button').forEach(button => {
-        button.addEventListener('click', function() {
-            const operation = this.getAttribute('onclick').replace('performOperation(', '').replace(')', '').replace(/'/g, '');
-            performOperation(operation);
-        });
-    });
-});
-
 function performOperation(operation) {
     const input1 = document.getElementById('input1').value;
     const input2 = document.getElementById('input2').value;
