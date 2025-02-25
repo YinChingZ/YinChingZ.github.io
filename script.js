@@ -1,9 +1,11 @@
 const display = document.getElementById('current-input');
 const resultDisplay = document.getElementById('result');
+const historyDisplay = document.getElementById('history');
 let currentInput = '';
 let result = '';
 let operator = '';
 let isDecimalAdded = false;
+let history = [];
 
 const buttons = document.querySelectorAll('.btn');
 buttons.forEach(button => {
@@ -139,6 +141,8 @@ function calculateResult() {
         currentInput = '';
         operator = '';
         isDecimalAdded = false;
+        updateHistory(operand1, operator, operand2, result);
+        triggerResultAnimation();
     }
 }
 
@@ -149,6 +153,8 @@ function calculateSquareRoot() {
         currentInput = '';
         operator = '';
         isDecimalAdded = false;
+        updateHistory(num, '√', '', result);
+        triggerResultAnimation();
     }
 }
 
@@ -159,6 +165,8 @@ function calculatePercentage() {
         currentInput = '';
         operator = '';
         isDecimalAdded = false;
+        updateHistory(num, '%', '', result);
+        triggerResultAnimation();
     }
 }
 
@@ -169,4 +177,20 @@ function addNumber(value) {
 function updateDisplay() {
     display.innerText = currentInput;
     resultDisplay.innerText = result;
+}
+
+function updateHistory(operand1, operator, operand2, result) {
+    const historyEntry = `${operand1} ${operator} ${operand2} = ${result}`;
+    history.push(historyEntry);
+    historyDisplay.innerHTML = history.join('<br>');
+}
+
+function triggerResultAnimation() {
+    resultDisplay.classList.remove('show');
+    void resultDisplay.offsetWidth; // Trigger reflow
+    resultDisplay.classList.add('show');
+    resultDisplay.classList.add('highlight');
+    setTimeout(() => {
+        resultDisplay.classList.remove('highlight');
+    }, 500);
 }

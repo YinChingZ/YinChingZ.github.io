@@ -144,3 +144,46 @@ body {
         font-size: 2em;
     }
 }
+
+/* Pb789 */
+#history-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+#history {
+    background: #f0f0f0;
+    color: #333;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+/* P4706 */
+#result {
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0;
+}
+
+#result.show {
+    opacity: 1;
+}
+
+/* Peb41 */
+#result.highlight {
+    animation: highlight 0.5s ease-in-out;
+}
+
+@keyframes highlight {
+    0% {
+        background-color: yellow;
+    }
+    100% {
+        background-color: transparent;
+    }
+}
