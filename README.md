@@ -1,6 +1,6 @@
 # 古代贸易网络大冒险 (Ancient Trade Network Adventure)
 
-![Game Preview](https://github.com/YinChingZ/YinChingZ.github.io/preview.jpg)
+![Game Preview]([https://github.com/YinChingZ/YinChingZ.github.io/preview.jpg](https://github.com/YinChingZ/YinChingZ.github.io/blob/main/preview.jpg))
 
 一个基于HTML5和JavaScript的回合制贸易模拟游戏，玩家将扮演古代商人，在丝绸之路、印度洋贸易路线和撒哈拉沙漠中建立贸易网络。
 
