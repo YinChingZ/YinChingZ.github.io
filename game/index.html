@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>古代贸易网络大冒险</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/board.css">
+    <link rel="stylesheet" href="css/cards.css">
+    <!-- 将语言文件最先加载 -->
+    <script src="js/language.js"></script>
+  </head>  
+<body>
+  <!-- 游戏配置界面 -->
+  <div id="game-config">
+    <h1>古代贸易网络大冒险</h1>
+    <div class="language-switcher">
+      <button id="lang-zh" class="lang-btn active">中文</button>
+      <button id="lang-en" class="lang-btn">English</button>
+    </div>
+    <form>
+      <label for="player-count" id="label-player-count">玩家数量:</label>
+      <select id="player-count">
+        <option value="2">2人</option>
+        <option value="3">3人</option>
+        <option value="4" selected>4人</option>
+        <option value="5">5人</option>
+        <option value="6">6人</option>
+      </select>
+      <button type="submit" id="start-game-btn">开始游戏</button>
+    </form>
+  </div>
+  
+  <!-- 游戏主界面 -->
+  <div id="game-ui" style="display: none;">
+    <div class="game-header">
+      <h2>古代贸易网络大冒险</h2>
+      <div id="phase-info">回合: 1, 阶段: 准备与规划阶段</div>
+    </div>
+    
+    <div class="game-container">
+      <!-- 游戏板区域 -->
+      <div class="board-container">
+        <canvas id="gameCanvas" width="800" height="600"></canvas>
+      </div>
+      
+      <!-- 玩家信息和操作区域 -->
+      <div class="player-info-container">
+        <div id="player-info">
+          <!-- 玩家信息动态填充 -->
+        </div>
+        
+        <div class="action-buttons">
+          <button id="next-phase-btn">下一阶段</button>
+          <button id="draw-card-btn">抽取卡牌</button>
+          <button id="build-route-btn">建立路线</button>
+          <button id="trade-btn">发起交易</button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 卡牌抽取区域 -->
+    <div class="deck-area">
+      <div id="resource-deck" class="deck">资源牌堆</div>
+      <div id="event-deck" class="deck">事件牌堆</div>
+      <div id="discard-pile" class="deck">弃牌堆</div>
+    </div>
+  </div>
+  
+  <!-- 对话框：资源选择 -->
+  <div id="resource-selection-dialog" class="dialog" style="display: none;">
+    <h3>选择用于铺设路线的资源</h3>
+    <p>请选择要使用的资源卡(需要2张)</p>
+    <div id="resource-selection-cards">
+      <!-- 动态填充玩家手牌 -->
+    </div>
+    <div class="dialog-buttons">
+      <button id="confirm-resources">确认</button>
+      <button id="cancel-resources">取消</button>
+    </div>
+  </div>
+  
+  <!-- 对话框：掷骰子 -->
+  <div id="dice-dialog" class="dialog" style="display: none;">
+    <h3>沙漠风暴！</h3>
+    <p>你需要掷骰子决定后果</p>
+    <div id="dice-result"></div>
+    <button id="roll-dice-btn">掷骰子</button>
+  </div>
+  
+  <!-- 对话框：交易 -->
+  <div id="trade-dialog" class="dialog" style="display: none;">
+    <!-- 交易界面内容 -->
+  </div>
+  
+  <!-- 加载所有JS文件（修改加载顺序） -->
+  <script src="js/board.js"></script>
+  <script src="js/cards.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/events.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/ui.js"></script>
+</body>
+</html>
