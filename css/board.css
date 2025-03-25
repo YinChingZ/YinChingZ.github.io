@@ -1,0 +1,41 @@
+/* 游戏板相关样式 */
+.board-container {
+  position: relative;
+}
+
+/* 玩家标记 */
+.player-marker {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+/* 路线高亮效果 */
+.route-highlight {
+  position: absolute;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* 城市标记 */
+.city-marker {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #333;
+  transform: translate(-50%, -50%);
+}
+
+/* 城市名称标签 */
+.city-label {
+  position: absolute;
+  font-size: 10px;
+  transform: translate(-50%, -100%);
+  white-space: nowrap;
+  color: #333;
+  font-weight: bold;
+}
